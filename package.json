@@ -1,0 +1,23 @@
+{
+  "name": "nph_solar_solutions",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tailwindcss -i ./src/input.css -o ./public/style.css --watch" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kavindu2OO1/NPH_Solar_Solutions.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kavindu2OO1/NPH_Solar_Solutions/issues"
+  },
+  "homepage": "https://github.com/Kavindu2OO1/NPH_Solar_Solutions#readme",
+  "description": "",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

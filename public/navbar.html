@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPH</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="navscript.js" defer></script> 
+    <style>
+        .dropdown {
+            padding-top: 5px;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 10px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 10px 0px;
+            z-index: 1;
+            border-radius: 2px;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        #signinmenu{
+          display: none;
+        }
+
+        
+        
+
+    </style>
+</head>
+<body>
+  <nav class="bg-white-800 border-1 border-black-1000">
+    <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 pt-16">
+      <div class="relative flex h-16 items-center justify-between bg-white text-black p-4">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <button id="mobile-menu-button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-green-700 hover:text-green focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
+        </div>
+        <div class="flex flex-1 mx-auto items-center justify-center sm:items-stretch sm:justify-start pt-3">
+          <div class="flex shrink-0 items-center">
+              <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/Home_Page.php" class="flex shrink-0 items-center">
+                  <img class="h-13 w-12" src="/xampp/NPH_Solar_Solutions/pictures/NPH_Logo1.jpg" alt="NPH">
+              </a>
+          </div>
+          <div class="hidden sm:block mx-auto flex justify-center items-center">
+            <div class="flex space-x-4">
+              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:text-green-700">About</a>
+              <div class="dropdown">
+                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:text-green-700">Packages</a>
+                <div class="dropdown-content">
+                  <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:text-green-700">Package 1</a>
+                </div>
+              </div>
+              <div class="dropdown">
+                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:text-green-700">Projects</a>
+                <div class="dropdown-content">
+                  <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/residental_projects.php" class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:text-green-700">Residental</a></br>
+                  <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/commercial_projects.php" class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:text-green-700">Commercial</a>
+                </div>
+              </div>
+              <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/Progress.php" class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:text-green-700">Progress</a>
+              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:text-green-700">Contact Us</a>
+              <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/savings_calculator.php" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                Find the Right Package for you
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+            <span class="sr-only">View notifications</span>
+            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2m0 0h13l1.4 7H6.4m-.4-7l-1 5m15 0a2 2 0 1 1-2 2m-10 0a2 2 0 1 1-2 2m2-2h10" />
+            </svg>
+          </button>
+          <div class="relative ml-3">
+            <div>
+              <a
+                  href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/signin.php"
+                  class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                  <img class="size-8 rounded-full" src="/xampp/NPH_Solar_Solutions/pictures/profile_picture.jpg" alt="profile picture">
+              </a>
+            </div>
+            <div id="signinmenu"  class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button">
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem">Sign In</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sm:hidden" id="mobile-menu" style="display: none;">
+      <div class="space-y-1 px-2 pb-3 pt-2">
+        <a href="#" class="block rounded-md px-3 py-2 text-sm font-medium text-black-300 bg-white hover:text-green-700">Dashboard</a>
+        <a href="#" class="block rounded-md px-3 py-2 text-sm font-medium text-black-300 bg-white hover:text-green-700">Team</a>
+        <a href="#" class="block rounded-md px-3 py-2 text-sm font-medium text-black-300 bg-white hover:text-green-700">Projects</a>
+        <a href="#" class="block rounded-md px-3 py-2 text-sm font-medium text-black-300 bg-white hover:text-green-700">Calendar</a>
+      </div>
+    </div>
+  </nav>
+
+
+
+</body>
+</html>
