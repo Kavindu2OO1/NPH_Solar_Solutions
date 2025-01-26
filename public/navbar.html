@@ -53,13 +53,11 @@
           </div>
           <div class="hidden sm:block mx-auto flex justify-center items-center">
             <div class="flex space-x-4">
-              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:text-green-700">About</a>
-              <div class="dropdown">
-                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:text-green-700">Packages</a>
-                <div class="dropdown-content">
-                  <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:text-green-700">Package 1</a>
-                </div>
-              </div>
+              
+              
+                <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/product.php" class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:text-green-700">Products</a>
+                
+              
               <div class="dropdown">
                 <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:text-green-700">Projects</a>
                 <div class="dropdown-content">
@@ -68,20 +66,20 @@
                 </div>
               </div>
               <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/Progress.php" class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:text-green-700">Progress</a>
-              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:text-green-700">Contact Us</a>
+              
               <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/savings_calculator.php" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                Find the Right Package for you
+                Find the Right System for you
               </a>
             </div>
           </div>
         </div>
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-          <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-            <span class="sr-only">View notifications</span>
-            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2m0 0h13l1.4 7H6.4m-.4-7l-1 5m15 0a2 2 0 1 1-2 2m-10 0a2 2 0 1 1-2 2m2-2h10" />
-            </svg>
-          </button>
+          <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/shoppingcart.php" 
+              class="relative rounded-full bg-white p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+              <span class="sr-only">View notifications</span>
+              <img src="/xampp/NPH_Solar_Solutions/pictures/shopping-cart.png" alt="Icon" class="size-6">
+          </a>
+
           <div class="relative ml-3">
             <div>
               <a
@@ -99,14 +97,34 @@
     </div>
     <div class="sm:hidden" id="mobile-menu" style="display: none;">
       <div class="space-y-1 px-2 pb-3 pt-2">
-        <a href="#" class="block rounded-md px-3 py-2 text-sm font-medium text-black-300 bg-white hover:text-green-700">Dashboard</a>
-        <a href="#" class="block rounded-md px-3 py-2 text-sm font-medium text-black-300 bg-white hover:text-green-700">Team</a>
-        <a href="#" class="block rounded-md px-3 py-2 text-sm font-medium text-black-300 bg-white hover:text-green-700">Projects</a>
-        <a href="#" class="block rounded-md px-3 py-2 text-sm font-medium text-black-300 bg-white hover:text-green-700">Calendar</a>
+          <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/product.php" class="block rounded-md px-3 py-2 text-sm font-medium text-black-300 bg-white hover:text-green-700">Products</a>
+          
+          <!-- Projects dropdown -->
+          <div class="relative">
+              <button onclick="toggleDropdown()" class="flex items-center justify-between w-full text-left rounded-md px-3 py-2 text-sm font-medium text-black-300 bg-white hover:text-green-700">
+                  Projects
+                  
+              </button>
+              <div id="projects-dropdown" class="hidden mt-1 space-y-1 bg-white rounded-md shadow">
+                  <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/residental_projects.php" class="block rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:text-green-700">Residential Projects</a>
+                  <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/commercial_projects.php" class="block rounded-md px-3 py-2 text-sm font-medium text-black-300 hover:text-green-700">Commercial Projects</a>
+              </div>
+          </div>
+  
+          <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/Progress.php" class="block rounded-md px-3 py-2 text-sm font-medium text-black-300 bg-white hover:text-green-700">Progress</a>
+          <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/savings_calculator.php" class="block rounded-md px-3 py-2 text-sm font-medium text-black-300 bg-white hover:text-green-700">Savings Calculator</a>
       </div>
-    </div>
+  </div>
+  </div>
   </nav>
 
+
+  <script>
+    function toggleDropdown() {
+        const dropdown = document.getElementById('projects-dropdown');
+        dropdown.classList.toggle('hidden');
+    }
+</script>
 
 
 </body>

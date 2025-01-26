@@ -39,17 +39,17 @@
 
     <div class=" bg-slate-900 shadow-sm w-full  mt-8 pt-10 pb-10 justify-items-center ">
         <div >
-        <a href="http://example.com" 
+        <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/vieworders.php"  
             class="text-white bg-blue-700 hover:bg-blue-800  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 m-3  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-            Orders
+            View Orders
         </a>
 
-        <a href="http://example.com" 
+        <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/viewappoinments.php"   
             class="text-white bg-blue-700 hover:bg-blue-800  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 m-3  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-            Appoinments
+             View Appoinments
         </a>
 
-        <a href="http://example.com" 
+        <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/adminpanel.php" 
             class="text-white bg-blue-700 hover:bg-blue-800  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 m-3  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
             Set Progress
         </a>
@@ -149,46 +149,12 @@
         </form>
 
         <?php if ($showCustomDiv): ?>
-        <div class="custom1 mt-6 grid grid-cols-2 gap-4 ">
+        <div class="custom1 mt-6 grid grid-cols-1 gap-4 ">
             <div class="shadow-lg rounded bg-white p-4">
-                <p class="font-sans text-black pb-2 ">Recommended solar system for you</p>
-                <p class="font-sans text-black pb-2"> 5 kW</p>
+                <p class="font-sans text-black pb-2 ">Project Status Updated Succesfull</p>
+                
             </div>
-            <div class="shadow-lg rounded bg-white p-4" >
-                <p class="font-sans text-black pb-2">Average Monthly Generation</p>
-                <p class="font-sans text-black pb-2"> 289 Units</p>
-            </div>
-            <div class="shadow-lg rounded bg-white p-4">
-                <p class="font-sans text-black pb-2">Average Cost</p>
-                <p class="font-sans text-black pb-2"> 120,000 LKR</p>
-            </div> 
-            <div class="shadow-lg rounded bg-white p-4">
-                <p class="font-sans text-black pb-2">Monthly Unit Used</p>
-                <p class="font-sans text-black pb-2">150 Units</p>
-            </div>
-            <div class="shadow-lg rounded bg-white p-4">
-                <p class="font-sans text-black pb-2">Electricity Bill</p>
-                <p class="font-sans text-black pb-2">10000 LKR</p>
-            </div>
-            <div class="shadow-lg rounded bg-white p-4">
-                <p class="font-sans text-black pb-2">Solar Monthly Installment</p>
-                <p class="font-sans text-black pb-2">12,000 LKR</p>
-            </div>
-            <div class="shadow-lg rounded bg-white p-4">
-                <p class="font-sans text-black pb-2">Monthly Savings</p>
-                <p class="font-sans text-black pb-2">5000 LKR</p>
-            </div>
-            <div class="shadow-lg rounded bg-white p-4">
-            <p class="font-sans text-black pb-2">Make an appoinment</p>
-            <a href >
-                <button
-                    type="submit"
-                    name="calculateBtn"
-                    class="focus:outline-none hover:text-black text-white bg-orange-600 hover:bg-orange-600 focus:ring-4 focus:ring-orange-200 font-medium rounded-lg text-sm px-3 py-2 align-middle">
-                    appoinment
-                </button>
-            </a>
-            </div>
+            
         </div>
         <?php endif; ?>
 
@@ -197,77 +163,9 @@
 
     
 
-<footer class="bg-white dark:bg-gray-900 mt-8">
-    <div class="mx-auto w-full max-w-screen-xl">
-      <div class="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-3">
-        <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
-            <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                <li class="mb-4">
-                    <a href="#" class=" hover:underline">About</a>
-                </li>
-                <li class="mb-4">
-                    <a href="#" class="hover:underline">Careers</a>
-                </li>
-                <li class="mb-4">
-                    <a href="#" class="hover:underline">Brand Center</a>
-                </li>
-                <li class="mb-4">
-                    <a href="#" class="hover:underline">Blog</a>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Help center</h2>
-            <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                <li class="mb-4">
-                    <a href="#" class="hover:underline">Discord Server</a>
-                </li>
-                <li class="mb-4">
-                    <a href="#" class="hover:underline">Twitter</a>
-                </li>
-                <li class="mb-4">
-                    <a href="#" class="hover:underline">Facebook</a>
-                </li>
-                <li class="mb-4">
-                    <a href="#" class="hover:underline">Contact Us</a>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
-            <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                <li class="mb-4">
-                    <a href="#" class="hover:underline">Privacy Policy</a>
-                </li>
-                <li class="mb-4">
-                    <a href="#" class="hover:underline">Licensing</a>
-                </li>
-                <li class="mb-4">
-                    <a href="#" class="hover:underline">Terms &amp; Conditions</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-
-    <div>
-        <h1></h1>
-    </div>
-
-
-    <div class="px-4 py-6 bg-gray-100 dark:bg-gray-700 md:flex md:items-center md:justify-between">
-        <span class="text-sm text-gray-500 dark:text-gray-300 sm:text-center">© 2023 <a href="https://www.facebook.com/profile.php?id=100086148196003">NPH Solar Solutions</a>. All Rights Reserved.
-        </span>
-        <div class="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
-            <!-- social media links -->
-
-
-        </div>
-      </div>
-    </div>
-</footer>
-
+    <?php 
+        include 'footer.html';
+     ?>
     
 </body>
 </html>
