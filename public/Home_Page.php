@@ -37,7 +37,7 @@
 
         /* Background Styling */
         body {
-            background-image: url('/xampp/NPH_Solar_Solutions/pictures/solar-panels-roof-solar-cell.jpg');
+            background-image: url('/NPH_Solar_Solutions/pictures/solar-panels-roof-solar-cell.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -84,7 +84,7 @@
   <div class=" m-auto hidden md:block">
     <img 
       class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 max-w-full object-contain" 
-      src="/xampp/NPH_Solar_Solutions/pictures/NPH_Logo.jpg" 
+      src="/NPH_Solar_Solutions/pictures/NPH_Logo.jpg" 
       alt="profile picture">
   </div>
 
@@ -114,7 +114,7 @@
         <!-- Service 1 -->
         <div class="shadow-lg bg-white rounded-lg m-auto flex flex-col justify-between min-h-[350px]">
             <img class="w-full h-auto scale-75 max-w-full object-contain mx-auto"
-                src="/xampp/NPH_Solar_Solutions/pictures/on-grid.jpg"
+                src="/NPH_Solar_Solutions/pictures/on-grid.jpg"
                 alt="profile picture">
             <p class="font-sans mt-8 mb-8 text-center border-cyan-300 text-black text-base sm:text-sm md:text-base lg:text-lg xl:text-xl font-medium leading-relaxed">
                 On-Grid and Off-grid Solar System Installation
@@ -127,7 +127,7 @@
         <!-- Service 2 -->
         <div class="shadow-lg bg-white rounded-lg m-auto flex flex-col justify-between min-h-[350px]">
             <img class="w-full h-auto scale-75 max-w-full object-contain mx-auto"
-                src="/xampp/NPH_Solar_Solutions/pictures/upgrade.jpg"
+                src="/NPH_Solar_Solutions/pictures/upgrade.jpg"
                 alt="profile picture">
             <p class="font-sans mt-8 mb-8 text-center border-cyan-300 text-black text-base sm:text-sm md:text-base lg:text-lg xl:text-xl font-medium leading-relaxed">
                 System Upgrades
@@ -140,7 +140,7 @@
         <!-- Service 3 -->
         <div class="shadow-lg bg-white rounded-lg m-auto flex flex-col justify-between min-h-[350px]">
             <img class="w-full h-auto scale-75 max-w-full object-contain mx-auto"
-                src="/xampp/NPH_Solar_Solutions/pictures/import.jpg"
+                src="/NPH_Solar_Solutions/pictures/import.jpg"
                 alt="profile picture">
             <p class="font-sans mt-8 mb-8 text-center border-cyan-300 text-black text-base sm:text-sm md:text-base lg:text-lg xl:text-xl font-medium leading-relaxed">
                 Solar Equipment Importation
@@ -153,7 +153,7 @@
         <!-- Service 4 -->
         <div class="shadow-lg bg-white rounded-lg m-auto flex flex-col justify-between min-h-[350px]">
             <img class="w-full h-auto scale-75 max-w-full object-contain mx-auto"
-                src="/xampp/NPH_Solar_Solutions/pictures/maintain.jpg"
+                src="/NPH_Solar_Solutions/pictures/maintain.jpg"
                 alt="profile picture">
             <p class="font-sans mt-8 mb-8 text-center border-cyan-300 text-black text-base sm:text-sm md:text-base lg:text-lg xl:text-xl font-medium leading-relaxed">
                 Maintenance and Repair Services
@@ -178,7 +178,7 @@
         <div class=" rounded-lg m-auto">
             <img 
                 class="w-64 h-64 w ml-5 md:w-80 md:h-80 lg:w-96 lg:h-96 max-w-full object-contain" 
-                src="/xampp/NPH_Solar_Solutions/pictures/calculator.png" 
+                src="/NPH_Solar_Solutions/pictures/calculator.png" 
                 alt="Calculator">
                 
         </div>
@@ -189,7 +189,7 @@
                 Our Solar Savings Calculator is designed to help you find the perfect solar system for your needs. Simply input your monthly electricity bill, and the calculator will recommend the most suitable solar system for your energy consumption. It will also provide an estimate of your monthly savings, empowering you to make informed decisions about switching to clean, renewable energy while reducing your utility costs.
               </p>
           <div class="flex justify-center items-center mt-6">
-              <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/savings_calculator.php" 
+              <a href="http://127.0.0.1/NPH_Solar_Solutions/public/savings_calculator.php" 
                 class="content-center focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                 Find the Right System for You
               </a>

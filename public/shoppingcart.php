@@ -36,7 +36,7 @@
         <!-- redirect to home -->
         <div class="pb-8">
             <a
-                href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/Home_Page.php"
+                href="http://127.0.0.1/NPH_Solar_Solutions/public/Home_Page.php"
                 class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2  dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                 Return To Home 
             </a>
@@ -62,7 +62,7 @@
                             <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                             <a href="#" class="shrink-0 md:order-1">
                                 
-                                <img class="hidden h-20 w-20 dark:block" src="/xampp/NPH_Solar_Solutions/pictures/solar-house.png" alt="imac image" />
+                                <img class="hidden h-20 w-20 dark:block" src="/NPH_Solar_Solutions/pictures/solar-house.png" alt="imac image" />
                             </a>
 
                             <label for="counter-input" class="sr-only">Choose quantity:</label>
@@ -108,7 +108,7 @@
                             <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                             <a href="#" class="shrink-0 md:order-1">
                                 
-                                <img class="hidden h-20 w-20 dark:block" src="/xampp/NPH_Solar_Solutions/pictures/solar-cell.png" alt="imac image" />
+                                <img class="hidden h-20 w-20 dark:block" src="/NPH_Solar_Solutions/pictures/solar-cell.png" alt="imac image" />
                             </a>
 
                             <label for="counter-input" class="sr-only">Choose quantity:</label>
@@ -152,7 +152,7 @@
                             <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                             <a href="#" class="shrink-0 md:order-1">
                                 
-                                <img class="hidden h-20 w-20 dark:block" src="/xampp/NPH_Solar_Solutions/pictures/solar-inverter.png" alt="imac image" />
+                                <img class="hidden h-20 w-20 dark:block" src="/NPH_Solar_Solutions/pictures/solar-inverter.png" alt="imac image" />
                             </a>
 
                             <label for="counter-input" class="sr-only">Choose quantity:</label>
@@ -233,11 +233,11 @@
                             </dl>
                         </div>
 
-                        <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/checkout.php" class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-black hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed to Checkout</a>
+                        <a href="http://127.0.0.1/NPH_Solar_Solutions/public/checkout.php" class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-black hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed to Checkout</a>
 
                         <div class="flex items-center justify-center gap-2">
                             <span class="text-sm font-normal text-black"> or </span>
-                            <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/product.php" title="" class="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500">
+                            <a href="http://127.0.0.1/NPH_Solar_Solutions/public/product.php" title="" class="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500">
                             Continue Shopping
                             <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4" />

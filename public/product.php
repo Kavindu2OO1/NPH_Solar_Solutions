@@ -24,7 +24,7 @@ include 'navbar.html';
     }
     /* Background Styling */
     body {
-            background-image: url('/xampp/NPH_Solar_Solutions/pictures/solar-panels-roof-solar-cell.jpg');
+            background-image: url('/NPH_Solar_Solutions/pictures/solar-panels-roof-solar-cell.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -49,19 +49,19 @@ include 'navbar.html';
             <!-- Card 1 -->
             
 
-        <div class="max-w-sm ml-11 bg-white border border-gray-200 rounded-lg shadow">
+            <div class="max-w-sm ml-11 bg-white border border-gray-200 rounded-lg shadow">
             <a href="#">
-                <img class="rounded-t-lg scale-75" src="/xampp/NPH_Solar_Solutions/pictures/solar-house.png" alt="5KW solar" />
+                <img class="rounded-t-lg scale-75" src="/NPH_Solar_Solutions/pictures/solar-house.png" alt="5KW solar" />
             </a>
             <div class="p-5">
                 <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">5KW ON-Grid System</h5>
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">6KW ON-Grid System</h5>
                 </a>
                 <p class="mb-3 font-normal text-gray-700 ">Complete with installation and 10-year service & warranty. This system connects seamlessly to your grid, offering clean energy and long-term savings.</p>
                 
                 <!-- Price added here -->
                 <div class="flex items-center justify-between mb-4">
-                    <span class="text-xl font-bold text-gray-900">LKR 950,000</span>  <!-- Price is just an example -->
+                    <span class="text-xl font-bold text-gray-900">LKR 100,0000</span>  <!-- Price is just an example -->
                 </div>
 
                 <!-- Add to Cart button -->
@@ -78,7 +78,7 @@ include 'navbar.html';
             <!-- Card 2 -->
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
             <a href="#">
-                <img class="rounded-t-lg scale-75" src="/xampp/NPH_Solar_Solutions/pictures/solar-house.png" alt="5KW solar" />
+                <img class="rounded-t-lg scale-75" src="/NPH_Solar_Solutions/pictures/solar-house.png" alt="5KW solar" />
             </a>
             <div class="p-5">
                 <a href="#">
@@ -104,7 +104,7 @@ include 'navbar.html';
             <!-- Card 3 -->
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
             <a href="#">
-                <img class="rounded-t-lg scale-75" src="/xampp/NPH_Solar_Solutions/pictures/solar-house.png" alt="5KW solar" />
+                <img class="rounded-t-lg scale-75" src="/NPH_Solar_Solutions/pictures/solar-house.png" alt="5KW solar" />
             </a>
             <div class="p-5">
                 <a href="#">
@@ -131,7 +131,7 @@ include 'navbar.html';
             <!-- Card 4 -->
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
                     <a href="#">
-                        <img class="rounded-t-lg scale-75" src="/xampp/NPH_Solar_Solutions/pictures/solar-house.png" alt="5KW solar" />
+                        <img class="rounded-t-lg scale-75" src="/NPH_Solar_Solutions/pictures/solar-house.png" alt="5KW solar" />
                     </a>
                     <div class="p-5">
                         <a href="#">
@@ -156,7 +156,7 @@ include 'navbar.html';
 
             <div class="max-w-sm ml-11 bg-white border border-gray-200 rounded-lg shadow">
                 <a href="#">
-                    <img class="rounded-t-lg scale-75" src="/xampp/NPH_Solar_Solutions/pictures/solar-cell.png" alt="5KW solar" />
+                    <img class="rounded-t-lg scale-75" src="/NPH_Solar_Solutions/pictures/solar-cell.png" alt="5KW solar" />
                 </a>
                 <div class="p-5">
                     <a href="#">
@@ -183,7 +183,7 @@ include 'navbar.html';
             <!-- Card 2 -->
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
             <a href="#">
-                <img class="rounded-t-lg scale-75" src="/xampp/NPH_Solar_Solutions/pictures/solar-inverter.png" alt="5KW solar" />
+                <img class="rounded-t-lg scale-75" src="/NPH_Solar_Solutions/pictures/solar-inverter.png" alt="5KW solar" />
             </a>
             <div class="p-5">
                 <a href="#">
@@ -209,7 +209,7 @@ include 'navbar.html';
             <!-- Card 3 -->
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
             <a href="#">
-                <img class="rounded-t-lg scale-75" src="/xampp/NPH_Solar_Solutions/pictures/solar-house.png" alt="5KW solar" />
+                <img class="rounded-t-lg scale-75" src="/NPH_Solar_Solutions/pictures/solar-house.png" alt="5KW solar" />
             </a>
             <div class="p-5">
                 <a href="#">
@@ -236,7 +236,7 @@ include 'navbar.html';
             <!-- Card 4 -->
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
                     <a href="#">
-                        <img class="rounded-t-lg scale-75" src="/xampp/NPH_Solar_Solutions/pictures/solar-house.png" alt="5KW solar" />
+                        <img class="rounded-t-lg scale-75" src="/NPH_Solar_Solutions/pictures/solar-house.png" alt="5KW solar" />
                     </a>
                     <div class="p-5">
                         <a href="#">

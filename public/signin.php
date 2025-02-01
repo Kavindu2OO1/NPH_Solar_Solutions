@@ -38,14 +38,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check ID_Number for redirection
     if ($ID_Number == "2001" && $password == "1234") {
         // Redirect to the savings calculator
-        header('Location: http://127.0.0.1/xampp/NPH_Solar_Solutions/public/Home_Page.php');
+        header('Location: http://127.0.0.1/NPH_Solar_Solutions/public/Home_Page.php');
         exit();
     }
 
     // Check ID_Number for redirection
     if ($ID_Number == "2002" && $password == "1234") {
         // Redirect to the savings calculator
-        header('Location: http://127.0.0.1/xampp/NPH_Solar_Solutions/public/adminpanel.php');
+        header('Location: http://127.0.0.1/NPH_Solar_Solutions/public/adminpanel.php');
         exit();
     }
 
@@ -64,7 +64,7 @@ $showCustomDiv = isset($_POST['calculateBtn']);
         <!-- redirect to home -->
         <div class="pb-8">
             <a
-                href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/Home_Page.php"
+                href="http://127.0.0.1/NPH_Solar_Solutions/public/Home_Page.php"
                 class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2  dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                 Return To Home 
             </a>
@@ -91,7 +91,7 @@ $showCustomDiv = isset($_POST['calculateBtn']);
             <p class="font-sans text-black pb-2 text-left mt-4">
                     Don't have an account yet? 
                     <a 
-                        href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/register.php" 
+                        href="http://127.0.0.1/NPH_Solar_Solutions/public/register.php" 
                         class="text-blue-500 hover:underline"
                         target="_blank"
                         rel="noopener noreferrer"

@@ -39,17 +39,17 @@
 
     <div class=" bg-slate-900 shadow-sm w-full  mt-8 pt-10 pb-10 justify-items-center ">
         <div >
-        <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/vieworders.php"  
+        <a href="http://127.0.0.1/NPH_Solar_Solutions/public/vieworders.php"  
             class="text-white bg-blue-700 hover:bg-blue-800  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 m-3  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
             View Orders
         </a>
 
-        <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/viewappoinments.php"   
+        <a href="http://127.0.0.1/NPH_Solar_Solutions/public/viewappoinments.php"   
             class="text-white bg-blue-700 hover:bg-blue-800  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 m-3  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
              View Appoinments
         </a>
 
-        <a href="http://127.0.0.1/xampp/NPH_Solar_Solutions/public/adminpanel.php" 
+        <a href="http://127.0.0.1/NPH_Solar_Solutions/public/adminpanel.php" 
             class="text-white bg-blue-700 hover:bg-blue-800  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 m-3  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
             Set Progress
         </a>

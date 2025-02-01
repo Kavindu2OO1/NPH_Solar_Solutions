@@ -25,7 +25,7 @@ include 'navbar.html';
 
     /* Background Styling */
     body {
-            background-image: url('/xampp/NPH_Solar_Solutions/pictures/solar-panels-roof-solar-cell.jpg');
+            background-image: url('/NPH_Solar_Solutions/pictures/solar-panels-roof-solar-cell.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -51,7 +51,7 @@ include 'navbar.html';
 
     <!-- Card 1 -->
     <div class="relative shadow-lg rounded bg-white p-4 m-10">
-        <img class="transition-all duration-300 rounded-lg hover:blur-sm" src="/xampp/NPH_Solar_Solutions/pictures/project1.jpg" alt="Project 1">
+        <img class="transition-all duration-300 rounded-lg hover:blur-sm" src="/NPH_Solar_Solutions/pictures/project1.jpg" alt="Project 1">
         <div class="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg">
             <p class="text-white text-lg font-bold">25 KW System</p>
             <p class="text-white text-sm mt-2 px-2 text-center">This project features a 5kW solar panel installation for a residential property.</p>
@@ -60,7 +60,7 @@ include 'navbar.html';
 
     <!-- Card 2 -->
     <div class="relative shadow-lg rounded bg-white p-4 m-10">
-        <img class="transition-all duration-300 rounded-lg hover:blur-sm" src="/xampp/NPH_Solar_Solutions/pictures/project2.jpg" alt="Project 2">
+        <img class="transition-all duration-300 rounded-lg hover:blur-sm" src="/NPH_Solar_Solutions/pictures/project2.jpg" alt="Project 2">
         <div class="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg">
             <p class="text-white text-lg font-bold">5 KW  System</p>
             <p class="text-white text-sm mt-2 px-2 text-center">This installation uses advanced solar technology for optimal energy generation.</p>
@@ -69,7 +69,7 @@ include 'navbar.html';
 
     <!-- Card 3 -->
     <div class="relative shadow-lg rounded bg-white p-4 m-10">
-        <img class="transition-all duration-300 rounded-lg hover:blur-sm" src="/xampp/NPH_Solar_Solutions/pictures/project3.jpg" alt="Project 3">
+        <img class="transition-all duration-300 rounded-lg hover:blur-sm" src="/NPH_Solar_Solutions/pictures/project3.jpg" alt="Project 3">
         <div class="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg">
             <p class="text-white text-lg font-bold">10 KW System</p>
             <p class="text-white text-sm mt-2 px-2 text-center">A customized solar solution for a modern residential villa.</p>
@@ -78,7 +78,7 @@ include 'navbar.html';
 
     <!-- Card 4 -->
     <div class="relative shadow-lg rounded bg-white p-4 m-10">
-        <img class="transition-all duration-300 rounded-lg hover:blur-sm" src="/xampp/NPH_Solar_Solutions/pictures/project1.jpg" alt="Project 4">
+        <img class="transition-all duration-300 rounded-lg hover:blur-sm" src="/NPH_Solar_Solutions/pictures/project1.jpg" alt="Project 4">
         <div class="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-lg">
             <p class="text-white text-lg font-bold">6 KW System</p>
             <p class="text-white text-sm mt-2 px-2 text-center">An eco-friendly solar panel setup tailored for urban households.</p>
