@@ -22,6 +22,12 @@
         
 
     </style>
+
+    <?php
+    // Check if the form has been submitted
+    
+    
+    ?>
 </head>
 <body>
     <?php 

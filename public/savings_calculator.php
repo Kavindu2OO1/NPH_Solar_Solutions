@@ -96,13 +96,13 @@
                 <p class="font-sans text-black pb-2">5000 LKR</p>
             </div>
             <div class="shadow-lg rounded bg-white p-4">
-            <p class="font-sans text-black pb-2">Make an appoinment</p>
+            <p class="font-sans text-black pb-2">Make an Appointment </p>
             <a href="http://127.0.0.1/NPH_Solar_Solutions/public/appoinment.php" >
                 <button
                     type="submit"
                     name="calculateBtn"
                     class="focus:outline-none hover:text-black text-white bg-orange-600 hover:bg-orange-600 focus:ring-4 focus:ring-orange-200 font-medium rounded-lg text-sm px-3 py-2 align-middle">
-                    appoinment
+                    Appointment 
                 </button>
             </a>
             </div>
