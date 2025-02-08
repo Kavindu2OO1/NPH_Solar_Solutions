@@ -1,5 +1,30 @@
+<?php
+session_start();
+error_reporting(0);          // Disable all error reporting
+ini_set('display_errors', 0); 
+
+// Restrict access to admins only
+if (!isset($_SESSION['loggedin']) || $_SESSION['user_type'] !== 'Admin') {
+    header("HTTP/1.1 403 Forbidden");
+    header("Location: Home_Page.php");
+    exit();
+}
+
+// Admin session timeout (1 hour)
+$admin_session_duration = 3600;
+if (isset($_SESSION['created']) && (time() - $_SESSION['created'] > $admin_session_duration)) {
+    session_unset();
+    session_destroy();
+    header("Location: login.php");
+    exit();
+}
+
+// Update session time on activity
+$_SESSION['created'] = time();
+?>
+
 <?php 
-  include 'navbar.html';
+  include 'navbar.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,25 +62,10 @@
         <p class="font-sans text-orange-500 text-5xl align-middle  ">Admin Panel</p>
     </div>
 
-    <div class=" bg-slate-900 shadow-sm w-full  mt-8 pt-10 pb-10 justify-items-center ">
-        <div >
-        <a href="http://127.0.0.1/NPH_Solar_Solutions/public/vieworders.php" 
-            class="text-white bg-blue-700 hover:bg-blue-800  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 m-3  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-             view Orders
-        </a>
+    <?php
+        include 'admin_navbar.php'
+    ?>
 
-        <a href="http://127.0.0.1/NPH_Solar_Solutions/public/viewappoinments.php"   
-            class="text-white bg-blue-700 hover:bg-blue-800  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 m-3  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-             View Appoinments
-        </a>
-
-        <a href="http://127.0.0.1/NPH_Solar_Solutions/public/adminpanel.php" 
-            class="text-white bg-blue-700 hover:bg-blue-800  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 m-3  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-            Set Progress
-        </a>
-
-        </div>
-    </div>
 
     <div class="bg-gray-100 p-8  mb-48 mt-48 drop-shadow-2xl rounded max-w-md mx-auto md:max-w-5xl"> 
         <form method="POST" action="">

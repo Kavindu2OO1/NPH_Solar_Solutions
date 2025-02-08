@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Savings Calculator</title>
+    <title>Sign in</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -26,34 +27,79 @@
 <body>
 
 <?php 
-$ID_Number = "";
-$password = "";
+    //database connection
+require_once 'dB_Connection.php';
+session_start();
 
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve the form data
-    $ID_Number = $_POST['ID_Number'];
-    $password = $_POST['password'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // Check ID_Number for redirection
-    if ($ID_Number == "2001" && $password == "1234") {
-        // Redirect to the savings calculator
-        header('Location: http://127.0.0.1/NPH_Solar_Solutions/public/Home_Page.php');
-        exit();
+    // Sanitize inputs
+    $nic = trim($_POST['nic'] ?? '');
+    $password = $_POST['password'] ?? '';
+
+    // Store old input
+    $old_input = [
+        'nic' => htmlspecialchars($nic),
+    ];
+
+    // Validation
+    
+    if (empty($nic)) {
+        $errors['nic'] = "ID Number is required";
+    } elseif (!preg_match('/^\d{10,12}$/', $nic)) {
+        $errors['nic'] = "Invalid ID Number format (10-12 digits)";
     }
 
-    // Check ID_Number for redirection
-    if ($ID_Number == "2002" && $password == "1234") {
-        // Redirect to the savings calculator
-        header('Location: http://127.0.0.1/NPH_Solar_Solutions/public/adminpanel.php');
-        exit();
+
+
+    if (empty($password)) {
+        $errors['password'] = "Password is required";
+    } elseif (strlen($password) < 8) {
+        $errors['password'] = "Password must be at least 8 characters";
     }
 
 
+    if (empty($errors)) {
+        // Prepare SQL query
+        $stmt = $conn->prepare("SELECT id, first_name, password_hash, user_type FROM users WHERE id_number = ?");
+        $stmt->bind_param("s", $nic);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if($result->num_rows === 1) {
+            $user = $result->fetch_assoc();
+            
+            if(password_verify($password, $user['password_hash'])) {
+                // Set session variables
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_type'] = $user['user_type'];
+                $_SESSION['loggedin'] = true;
+                $_SESSION['first_name'] = $user['first_name'];
+
+                if($user['user_type'] === 'User'){
+                // Redirect to home page
+                header("Location: Home_Page.php");
+                exit();
+                }else if($user['user_type'] === 'Admin'){
+                    // Redirect to admin panel
+                    header("Location: adminpanel.php");
+                    exit();
+                }
+                
+
+            } else {
+                $errors['login'] = "*Invalid ID Number or Password";
+            }
+        } else {
+            $errors['login'] = "*Invalid ID Number or Password";
+        }
+
+
+        
+        $stmt->close();
+    }
+    $conn->close();
 }
-
-// Check if the form has been submitted
-$showCustomDiv = isset($_POST['calculateBtn']);
 ?>
 
 
@@ -75,10 +121,15 @@ $showCustomDiv = isset($_POST['calculateBtn']);
         <form method="POST" action="">
             <p class="font-sans text-black pb-2 text-left text-2xl">Sign In To your account </p>
             <p class="font-sans text-black pb-2 text-left">ID Number</p>
-            <input class="placeholder:text-slate-400 block bg-white w-80 border border-slate-300 rounded-md py-2 pl-2 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-black focus:ring-1 sm:text-sm" placeholder="ID Number" type="text" name="ID_Number"/>
+            <input class="placeholder:text-slate-400 block bg-white w-80 border border-slate-300 rounded-md py-2 pl-2 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-black focus:ring-1 sm:text-sm" placeholder="ID Number" type="text" name="nic" value="<?= htmlspecialchars($old_input['nic'] ?? '') ?>"/>
+            <?php if (isset($errors['nic'])): ?>
+                <p class="text-red-600 text-sm mt-1"><?= $errors['nic'] ?></p>
+            <?php endif; ?>
             <p class="font-sans text-black pb-2 text-left">Password</p>
-            <input class="placeholder:text-slate-400 block bg-white w-80 border border-slate-300 rounded-md py-2 pl-2 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-black focus:ring-1 sm:text-sm" placeholder="Password" type="text" name="password"/>
-
+            <input class="placeholder:text-slate-400 block bg-white w-80 border border-slate-300 rounded-md py-2 pl-2 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-black focus:ring-1 sm:text-sm" placeholder="Password" type="password" name="password"/>
+            <?php if (isset($errors['password'])): ?>
+                <p class="text-red-600 text-sm mt-1"><?= $errors['password'] ?></p>
+            <?php endif; ?>
             
             <div class="mt-6">
                 <button
@@ -88,6 +139,9 @@ $showCustomDiv = isset($_POST['calculateBtn']);
                     Sign In
                 </button>
             </div>
+            <?php if (isset($errors['login'])): ?>
+                <div class="error text-red-600 font-semibold text-sm mt-2"><?= $errors['login'] ?></div>
+            <?php endif; ?>
             <p class="font-sans text-black pb-2 text-left mt-4">
                     Don't have an account yet? 
                     <a 
@@ -102,16 +156,7 @@ $showCustomDiv = isset($_POST['calculateBtn']);
 
         </form>
 
-        <?php if ($showCustomDiv): ?>
-        <div class="custom1 mt-6 grid grid-cols-1 gap-4 ">
-            <div class="shadow-lg rounded bg-white p-4">
-                <p class="font-sans text-black pb-2 ">Name:<?php echo "id is" . $ID_Number; ?></p>
-                <p class="font-sans text-black pb-2">Selected Solar System: 5 kW</p>
-                <p class="font-sans text-black pb-2">Status: Approved</p>
-            </div>
-            
-        </div>
-        <?php endif; ?>
+       
 
     </div>
     

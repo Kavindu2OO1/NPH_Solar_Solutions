@@ -1,3 +1,28 @@
+<?php
+session_start();
+error_reporting(0);          // Disable all error reporting
+ini_set('display_errors', 0); 
+// Set default timezone (adjust to your location)
+date_default_timezone_set('Asia/Colombo');
+
+// Initialize greeting
+$greeting = "";
+$currentHour = date('G');
+
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+    // Determine time-based greeting
+    if ($currentHour >= 5 && $currentHour < 12) {
+        $greeting = "Good morning";
+    } elseif ($currentHour >= 12 && $currentHour < 18) {
+        $greeting = "Good afternoon";
+    } elseif ($currentHour >= 18 && $currentHour < 22) {
+        $greeting = "Good evening";
+    } else {
+        $greeting = "Good day!";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,6 +95,27 @@
               <a href="http://127.0.0.1/NPH_Solar_Solutions/public/savings_calculator.php" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                 Find the Right System for you
               </a>
+              <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                  <a href="logout.php" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                      Logout
+                  </a>
+              <?php endif; ?>
+
+              <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                  <div class="pl-2 rounded-md px-3 py-2 text-sm font-medium text-black-300">
+                      <?php 
+                          echo htmlspecialchars($greeting) . ', ';
+                          echo '<span class="user-name">' . htmlspecialchars($_SESSION['first_name']) . '</span>.'; 
+                      ?>
+                  </div>
+              <?php endif; ?>
+
+
+              
+
+              
+
+
             </div>
           </div>
         </div>
