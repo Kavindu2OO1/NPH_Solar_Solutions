@@ -42,6 +42,15 @@ $_SESSION['created'] = time();
             background-position: center;
         }
 
+        /* Background Styling */
+        body {
+            background-image: url('/NPH_Solar_Solutions/pictures/solar-panels-roof-solar-cell.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
         nav, .content {
             position: relative;
             z-index: 10;

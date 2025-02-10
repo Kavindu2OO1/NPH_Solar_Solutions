@@ -10,14 +10,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['user_type'] !== 'Admin') {
     exit();
 }
 
-// Admin session timeout (1 hour)
-$admin_session_duration = 3600;
-if (isset($_SESSION['created']) && (time() - $_SESSION['created'] > $admin_session_duration)) {
-    session_unset();
-    session_destroy();
-    header("Location: login.php");
-    exit();
-}
+
 
 // Update session time on activity
 $_SESSION['created'] = time();
@@ -36,6 +29,15 @@ $_SESSION['created'] = time();
     <style>
         body {
             background-image: url('pictures/solar-panels-roof-solar-cell.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        /* Background Styling */
+        body {
+            background-image: url('/NPH_Solar_Solutions/pictures/solar-panels-roof-solar-cell.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;

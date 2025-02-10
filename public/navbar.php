@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 error_reporting(0);          // Disable all error reporting
 ini_set('display_errors', 0); 
 // Set default timezone (adjust to your location)

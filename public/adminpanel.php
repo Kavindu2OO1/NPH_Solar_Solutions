@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-error_reporting(0);          // Disable all error reporting
-ini_set('display_errors', 0); 
+//error_reporting(0);          // Disable all error reporting
+//ini_set('display_errors', 0); 
 
 // Restrict access to admins only
 if (!isset($_SESSION['loggedin']) || $_SESSION['user_type'] !== 'Admin') {
@@ -12,11 +12,11 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['user_type'] !== 'Admin') {
 }
 
 // Admin session timeout (1 hour)
-$admin_session_duration = 3600;
+$admin_session_duration = 3600; //3600 = 1hour
 if (isset($_SESSION['created']) && (time() - $_SESSION['created'] > $admin_session_duration)) {
     session_unset();
     session_destroy();
-    header("Location: login.php");
+    header("Location: signin.php");
     exit();
 }
 
@@ -127,8 +127,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     } catch (Exception $e) {
         $errors['database'] = $e->getMessage();
-    } finally {
-        $conn->close();
     }
 
     
@@ -188,136 +186,102 @@ function scrollWin() {
         ?>
 
     <div class="bg-gray-100 p-8  mb-48 mt-48 drop-shadow-2xl rounded max-w-md mx-auto md:max-w-6xl"> 
-        <form method="POST" action="">
-            <p class="font-sans text-justify  text-black pb-2">Users</p>
-
-            
-
+        <form method="POST" action="">        
             <div class="relative overflow-x-auto mb-8">
-            
-
             <?php
-require_once 'dB_Connection.php';
+                require_once 'dB_Connection.php';
 
-// Prepare SQL statement to select all users
-$sql = "SELECT * FROM users";
+                // First Table - Users
+                echo '<p class="font-sans text-justify text-black pb-2">Users</p>';
+                echo '<div class="relative overflow-x-auto mb-8 " style="max-height: 300px; overflow-y: auto;" >';
 
-// Execute query
-if ($result = mysqli_query($conn, $sql)) {
-    if (mysqli_num_rows($result) > 0) {
-        echo '<table class="w-full text-sm text-left rtl:text-right text-black dark:text-white">';
-        echo '<thead class="text-xs uppercase bg-white text-black">';
-        echo "<tr>";
-            echo '<th scope="col" class="px-6 py-3">First Name</th>';
-            echo '<th scope="col" class="px-6 py-3">Last Name</th>';
-            echo '<th scope="col" class="px-6 py-3">ID Number</th>';
-            echo '<th scope="col" class="px-6 py-3">Phone Number</th>';
-            echo '<th scope="col" class="px-6 py-3">Phase Count</th>';
-            echo '<th scope="col" class="px-6 py-3">User Type</th>';
-            echo '<th scope="col" class="px-6 py-3">Property Type</th>';
-            echo '<th scope="col" class="px-6 py-3">Address</th>';
-            echo '<th scope="col" class="px-6 py-3">City</th>';
-            echo '<th scope="col" class="px-6 py-3">Postal Code</th>';
-        echo "</tr>";
-        echo "</thead>";
-        echo "<tbody>";
-        
-        while ($row = mysqli_fetch_array($result)) {
-            echo '<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">';
-                echo '<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">' . 
-                     htmlspecialchars($row['first_name']) . '</th>';
-                echo '<td class="px-6 py-4">' . htmlspecialchars($row['last_name']) . '</td>';
-                echo '<td class="px-6 py-4">' . htmlspecialchars($row['id_number']) . '</td>';
-                echo '<td class="px-6 py-4">' . htmlspecialchars($row['phone_number']) . '</td>';
-                echo '<td class="px-6 py-4">' . htmlspecialchars($row['phase_count']) . '</td>';
-                echo '<td class="px-6 py-4">' . htmlspecialchars($row['user_type']) . '</td>';
-                echo '<td class="px-6 py-4">' . htmlspecialchars($row['property_type']) . '</td>';
-                echo '<td class="px-6 py-4">' . htmlspecialchars($row['address']) . '</td>';
-                echo '<td class="px-6 py-4">' . htmlspecialchars($row['city']) . '</td>';
-                echo '<td class="px-6 py-4">' . htmlspecialchars($row['postal_code']) . '</td>';
-            echo "</tr>";
-        }
-        
-        echo "</tbody>";
-        echo "</table>";
-        
-        // Free result set
-        mysqli_free_result($result);
-    } else {
-        echo '<div class="text-center py-4 text-gray-500">No users found.</div>';
-    }
-} else {
-    echo '<div class="text-center py-4 text-red-500">Error: ' . mysqli_error($conn) . '</div>';
-}
+                $sql_users = "SELECT * FROM users";
+                if ($result_users = mysqli_query($conn, $sql_users)) {
+                    if (mysqli_num_rows($result_users) > 0) {
+                        echo '<table class="w-full text-sm text-left rtl:text-right text-black dark:text-white">';
+                        echo '<thead class="text-xs uppercase bg-white text-black sticky top-0">';
+                        echo "<tr>";
+                        echo '<th scope="col" class="px-6 py-3">User ID</th>';
+                        echo '<th scope="col" class="px-6 py-3">First Name</th>';
+                        echo '<th scope="col" class="px-6 py-3">Last Name</th>';
+                        echo '<th scope="col" class="px-6 py-3">ID Number</th>';
+                        echo '<th scope="col" class="px-6 py-3">Phone Number</th>';
+                        echo '<th scope="col" class="px-6 py-3">Phase Count</th>';
+                        echo '<th scope="col" class="px-6 py-3">User Type</th>';
+                        echo '<th scope="col" class="px-6 py-3">Property Type</th>';
+                        echo '<th scope="col" class="px-6 py-3">Address</th>';
+                        echo '<th scope="col" class="px-6 py-3">City</th>';
+                        echo '<th scope="col" class="px-6 py-3">Postal Code</th>';
+                        echo "</tr>";
+                        echo "</thead>";
+                        echo "<tbody>";
+                        
+                        while ($row = mysqli_fetch_array($result_users)) {
+                            echo '<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">';
+                            echo '<td class="px-6 py-4">' . htmlspecialchars($row['id']) . '</td>';
+                            echo '<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">' . 
+                                htmlspecialchars($row['first_name']) . '</th>';
+                            echo '<td class="px-6 py-4">' . htmlspecialchars($row['last_name']) . '</td>';
+                            echo '<td class="px-6 py-4">' . htmlspecialchars($row['id_number']) . '</td>';
+                            echo '<td class="px-6 py-4">' . htmlspecialchars($row['phone_number']) . '</td>';
+                            echo '<td class="px-6 py-4">' . htmlspecialchars($row['phase_count']) . '</td>';
+                            echo '<td class="px-6 py-4">' . htmlspecialchars($row['user_type']) . '</td>';
+                            echo '<td class="px-6 py-4">' . htmlspecialchars($row['property_type']) . '</td>';
+                            echo '<td class="px-6 py-4">' . htmlspecialchars($row['address']) . '</td>';
+                            echo '<td class="px-6 py-4">' . htmlspecialchars($row['city']) . '</td>';
+                            echo '<td class="px-6 py-4">' . htmlspecialchars($row['postal_code']) . '</td>';
+                            echo "</tr>";
+                        }
+                        echo "</tbody>";
+                        echo "</table>";
+                        mysqli_free_result($result_users);
+                    } else {
+                        echo '<div class="text-center py-4 text-gray-500">No users found.</div>';
+                    }
+                }
+                echo '</div>';
 
-// Close connection
-mysqli_close($conn);
-?>
-            </div>
-            <p class="font-sans text-justify  text-black pb-2">Project Details</p>
-            <div class="relative overflow-x-auto mb-8">
-                <table class="w-full text-sm text-left rtl:text-right text-black dark:text-white">
-                    <thead class="text-xs  uppercase  bg-white  text-black">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                Name
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Phase
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Status
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Price
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Kavindu Thushantha Herath 
-                            </th>
-                            <td class="px-6 py-4">
-                                3
-                            </td>
-                            <td class="px-6 py-4">
-                                Pending
-                            </td>
-                            <td class="px-6 py-4">
-                                LKR 1000000
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Shanaya Hassen
-                            </th>
-                            <td class="px-6 py-4">
-                                3
-                            </td>
-                            <td class="px-6 py-4">
-                                Approved
-                            </td>
-                            <td class="px-6 py-4">
-                                LKR 3000000
-                            </td>
-                        </tr>
-                        <tr class="bg-white dark:bg-gray-800">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Manidu Lakmith
-                            </th>
-                            <td class="px-6 py-4">
-                                1
-                            </td>
-                            <td class="px-6 py-4">
-                                Under review 
-                            </td>
-                            <td class="px-6 py-4">
-                                LKR 9000000
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                // Second Table - Projects
+                echo '<p class="font-sans text-justify text-black pb-2">Project Details</p>';
+                echo '<div class="relative overflow-x-auto mb-8 " style="max-height: 300px; overflow-y: auto;" >';
+
+                $sql_projects = "SELECT * FROM projects";
+                if ($result_projects = mysqli_query($conn, $sql_projects)) {
+                    if (mysqli_num_rows($result_projects) > 0) {
+                        echo '<table class="w-full text-sm text-left rtl:text-right text-black dark:text-white">';
+                        echo '<thead class="text-xs uppercase bg-white text-black sticky top-0">';
+                        echo "<tr>";
+                        echo '<th scope="col" class="px-6 py-3">User Id</th>';
+                        echo '<th scope="col" class="px-6 py-3">Project Name</th>';
+                        echo '<th scope="col" class="px-6 py-3">Phase Count</th>';
+                        echo '<th scope="col" class="px-6 py-3">Status</th>';
+                        echo '<th scope="col" class="px-6 py-3">Price</th>';
+                        echo "</tr>";
+                        echo "</thead>";
+                        echo "<tbody>";
+                        
+                        while ($row = mysqli_fetch_array($result_projects)) {
+                            echo '<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">';
+                            echo '<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">' . 
+                                htmlspecialchars($row['user_id']) . '</th>';
+                            echo '<td class="px-6 py-4">' . htmlspecialchars($row['project_name']) . '</td>';
+                            echo '<td class="px-6 py-4">' . htmlspecialchars($row['phase_count']) . '</td>';
+                            echo '<td class="px-6 py-4">' . htmlspecialchars($row['status']) . '</td>';
+                            echo '<td class="px-6 py-4">' . htmlspecialchars($row['price']) . '</td>';
+                            echo "</tr>";
+                        }
+                        echo "</tbody>";
+                        echo "</table>";
+                        mysqli_free_result($result_projects);
+                    } else {
+                        echo '<div class="text-center py-4 text-gray-500">No projects found.</div>';
+                    }
+                }
+                echo '</div>';
+
+                // Close connection to db
+                mysqli_close($conn);
+                ?>
             </div>
             
             
