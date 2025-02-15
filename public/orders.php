@@ -1,26 +1,17 @@
 <?php
-session_start();
+require_once '../includes/session_manager.php';
+
+$sessionManager = new SessionManager();
+// Restrict access to only Admin role
+$sessionManager->checkAccess(['Admin']);
+
 error_reporting(0);          // Disable all error reporting
 ini_set('display_errors', 0); 
 
-// Restrict access to admins only
-if (!isset($_SESSION['loggedin']) || $_SESSION['user_type'] !== 'Admin') {
-    header("HTTP/1.1 403 Forbidden");
-    header("Location: Home_Page.php");
-    exit();
-}
+// Restrict access to admins on
 
 // Admin session timeout (1 hour)
-$admin_session_duration = 3600;
-if (isset($_SESSION['created']) && (time() - $_SESSION['created'] > $admin_session_duration)) {
-    session_unset();
-    session_destroy();
-    header("Location: login.php");
-    exit();
-}
 
-// Update session time on activity
-$_SESSION['created'] = time();
 ?>
 
 <?php 

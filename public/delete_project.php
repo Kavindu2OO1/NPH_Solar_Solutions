@@ -1,5 +1,7 @@
 <?php
-session_start();
+require_once '../includes/session_manager.php';
+
+$sessionManager = new SessionManager();
 require_once 'dB_Connection.php';
 
 // Check if admin is logged in
@@ -16,19 +18,15 @@ if (isset($_GET['id'])) {
     $stmt->bind_param("i", $id);
     
     if ($stmt->execute()) {
-        $stmt->close();
-        $conn->close();
-        header("Location: admin_panel.php?delete=success");
-        exit();
+        $_SESSION['success'] = "Project deleted successfully!";
     } else {
-        $stmt->close();
-        $conn->close();
-        header("Location: admin_panel.php?delete=error");
-        exit();
+        $_SESSION['error'] = "Error deleting Project.";
     }
+    header("Location: " . $_SERVER['HTTP_REFERER']);
+    exit();
 } else {
-    $conn->close();
-    header("Location: admin_panel.php");
+    $_SESSION['error'] = "Invalid request.";
+    header("Location: " . $_SERVER['HTTP_REFERER']);
     exit();
 }
 ?>

@@ -1,3 +1,9 @@
+<?php
+require_once '../config/database.php';
+require_once '../includes/session_manager.php';
+
+$sessionManager = new SessionManager();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +35,7 @@
 <?php 
     //database connection
 require_once 'dB_Connection.php';
-session_start();
+//session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -46,8 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     if (empty($nic)) {
         $errors['nic'] = "ID Number is required";
-    } elseif (!preg_match('/^\d{10,12}$/', $nic)) {
-        $errors['nic'] = "Invalid ID Number format (10-12 digits)";
+    } elseif (!preg_match('/^(\d{10,12}|\d{9}[A-Z])$/', $nic)) {
+        $errors['nic'] = "Invalid ID Number format (10-12 digits or 9 digits followed by an uppercase letter)";
     }
 
 
@@ -71,20 +77,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             if(password_verify($password, $user['password_hash'])) {
                 // Set session variables
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['user_type'] = $user['user_type'];
-                $_SESSION['loggedin'] = true;
-                $_SESSION['first_name'] = $user['first_name'];
+               // $_SESSION['user_id'] = $user['id'];
+               // $_SESSION['user_type'] = $user['user_type'];
+              //  $_SESSION['loggedin'] = true;
+               // $_SESSION['first_name'] = $user['first_name'];
+               $sessionManager->login([
+                'id' => $user['id'],
+                'user_type' => $user['user_type'],
+                'first_name' => $user['first_name']
+            ]);
 
-                if($user['user_type'] === 'User'){
+             //   if($user['user_type'] === 'User'){
                 // Redirect to home page
-                header("Location: Home_Page.php");
-                exit();
-                }else if($user['user_type'] === 'Admin'){
+             //   header("Location: Home_Page.php");
+             //   exit();
+             //   }else if($user['user_type'] === 'Admin'){
                     // Redirect to admin panel
+             //       header("Location: adminpanel.php");
+              //      exit();
+               // }
+               switch($user['user_type']) {
+                case 'Admin':
                     header("Location: adminpanel.php");
-                    exit();
-                }
+                    break;
+                case 'Manager':
+                    header("Location: /protected/manager/dashboard.php");
+                    break;
+                case 'Delivery_Personnel':
+                    header("Location: Home_Page.php");
+                    break;
+                case 'User':
+                    header("Location: Home_Page.php");
+                    break;
+            }
+            exit();
+
                 
 
             } else {

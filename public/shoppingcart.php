@@ -2,9 +2,14 @@
 require_once 'classes/Database.php';
 require_once 'classes/Product.php';
 require_once 'classes/ShoppingCart.php';
-session_start();
+//session_start();
+require_once '../includes/session_manager.php';
+//$sessionManager = new SessionManager();
 
-$userId = $_SESSION['user_id'] ?? null;
+//$userId = $_SESSION['user_id'] ?? null;
+
+$sessionManager = new SessionManager();
+$userId = $sessionManager->getUserId();
 $cart = new ShoppingCart();
 $cartItems = $userId ? $cart->getCartItems($userId) : [];
 

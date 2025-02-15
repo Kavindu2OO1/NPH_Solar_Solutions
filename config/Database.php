@@ -25,19 +25,5 @@
         public function getConnection() {
             return $this->conn;
         }
-        
-        public function beginTransaction() {
-            $this->conn->begin_transaction(); // mysqli syntax
-        }
-    
-        public function commit() {
-            $this->conn->commit();
-        }
-    
-        public function rollBack() {
-            $this->conn->rollback();
-        }
-
-        
     }
 ?>

@@ -1,6 +1,5 @@
 <?php
 require_once '../includes/session_manager.php';
-
 $sessionManager = new SessionManager();
 require_once 'dB_Connection.php';
 
@@ -10,26 +9,25 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['user_type'] !== 'Admin') {
     exit();
 }
 
-if (isset($_GET['id'])) {
-    $id = intval($_GET['id']);
+// Ensure product_id is passed
+if (isset($_GET['product_id'])) {
+    $id = intval($_GET['product_id']);
     
     // Prepare delete statement
-    $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
+    $stmt = $conn->prepare("DELETE FROM order_items WHERE product_id = ?");
     $stmt->bind_param("i", $id);
     
     if ($stmt->execute()) {
-        $_SESSION['success'] = "User deleted successfully!";
+        $_SESSION['success'] = "Order item(s) deleted successfully!";
     } else {
-        $_SESSION['error'] = "Error deleting user.";
+        $_SESSION['error'] = "Error deleting order item(s).";
     }
-    
+
     $stmt->close();
-    $conn->close();
-    header("Location: " . $_SERVER['HTTP_REFERER']);
-    exit();
 } else {
     $_SESSION['error'] = "Invalid request.";
-    header("Location: " . $_SERVER['HTTP_REFERER']);
-    exit();
 }
+
+header("Location: " . $_SERVER['HTTP_REFERER']);
+exit();
 ?>

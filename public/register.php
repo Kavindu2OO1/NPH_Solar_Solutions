@@ -62,10 +62,10 @@
         
         if (empty($nic)) {
             $errors['nic'] = "ID Number is required";
-        } elseif (!preg_match('/^\d{10,12}$/', $nic)) {
-            $errors['nic'] = "Invalid ID Number format (10-12 digits)";
+        } elseif (!preg_match('/^(\d{10,12}|\d{9}[A-Z])$/', $nic)) {
+            $errors['nic'] = "Invalid ID Number format (10-12 digits or 9 digits followed by an uppercase letter)";
         }
-
+    
         if (empty($phone)) {
             $errors['phone'] = "Phone Number is required";
         } elseif (!preg_match('/^\d{10}$/', $phone)) {

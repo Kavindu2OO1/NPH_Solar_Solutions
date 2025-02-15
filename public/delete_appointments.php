@@ -14,17 +14,14 @@ if (isset($_GET['id'])) {
     $id = intval($_GET['id']);
     
     // Prepare delete statement
-    $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
+    $stmt = $conn->prepare("DELETE FROM appointments WHERE id = ?");
     $stmt->bind_param("i", $id);
     
     if ($stmt->execute()) {
-        $_SESSION['success'] = "User deleted successfully!";
+        $_SESSION['success'] = "Appointment deleted successfully!";
     } else {
-        $_SESSION['error'] = "Error deleting user.";
+        $_SESSION['error'] = "Error deleting Appointment.";
     }
-    
-    $stmt->close();
-    $conn->close();
     header("Location: " . $_SERVER['HTTP_REFERER']);
     exit();
 } else {

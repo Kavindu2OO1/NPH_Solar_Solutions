@@ -1,27 +1,10 @@
 <?php
-session_start();
+require_once '../includes/session_manager.php';
+
+//session_start();
 error_reporting(0);          // Disable all error reporting
 ini_set('display_errors', 0); 
 
-// Set default timezone (adjust to your location)
-date_default_timezone_set('Asia/Colombo');
-
-// Initialize greeting
-$greeting = "";
-$currentHour = date('G');
-
-if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-    // Determine time-based greeting
-    if ($currentHour >= 5 && $currentHour < 12) {
-        $greeting = "Good morning";
-    } elseif ($currentHour >= 12 && $currentHour < 18) {
-        $greeting = "Good afternoon";
-    } elseif ($currentHour >= 18 && $currentHour < 22) {
-        $greeting = "Good evening";
-    } else {
-        $greeting = "Good night";
-    }
-}
 ?>
 
 

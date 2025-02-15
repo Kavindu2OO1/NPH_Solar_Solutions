@@ -2,10 +2,13 @@
 require_once 'classes/Database.php';
 require_once 'classes/Product.php';
 require_once 'classes/ShoppingCart.php';
+require_once '../includes/session_manager.php';
 include 'navbar.php';
 
-session_start();
+//session_start();
 //$userId = $_SESSION['user_id'] ?? null; // Assuming you have user authentication
+$sessionManager = new SessionManager();
+$userId = $sessionManager->getUserId();
 $productObj = new Product();
 $products = $productObj->getAllProducts();
 
@@ -84,5 +87,5 @@ $products = $productObj->getAllProducts();
 
    
 </body>
-<?php include 'footer.html'; ?>
+ <?php include 'footer.html'; ?>
 </html>

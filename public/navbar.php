@@ -1,4 +1,10 @@
 <?php
+require_once '../includes/session_manager.php';
+
+$sessionManager = new SessionManager();
+// Restrict access to only Admin role
+
+
 //session_start();
 error_reporting(0);          // Disable all error reporting
 ini_set('display_errors', 0); 
@@ -9,17 +15,17 @@ date_default_timezone_set('Asia/Colombo');
 $greeting = "";
 $currentHour = date('G');
 
-if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-    // Determine time-based greeting
-    if ($currentHour >= 5 && $currentHour < 12) {
-        $greeting = "Good morning";
-    } elseif ($currentHour >= 12 && $currentHour < 18) {
-        $greeting = "Good afternoon";
-    } elseif ($currentHour >= 18 && $currentHour < 22) {
-        $greeting = "Good evening";
-    } else {
-        $greeting = "Good day!";
-    }
+// Check if user is logged in using SessionManager
+if ($sessionManager->isLoggedIn()) {
+  if ($currentHour >= 5 && $currentHour < 12) {
+      $greeting = "Good morning";
+  } elseif ($currentHour >= 12 && $currentHour < 18) {
+      $greeting = "Good afternoon";
+  } elseif ($currentHour >= 18 && $currentHour < 22) {
+      $greeting = "Good evening";
+  } else {
+      $greeting = "Good day!";
+  }
 }
 ?>
 
@@ -95,13 +101,27 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
               <a href="http://127.0.0.1/NPH_Solar_Solutions/public/savings_calculator.php" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                 Find the Right System for you
               </a>
-              <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+              <?php if ($sessionManager->isLoggedIn()): ?>
                   <a href="logout.php" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                       Logout
                   </a>
               <?php endif; ?>
 
-              <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+              <?php if ($sessionManager->getUserType() === 'Admin' ): ?>
+                  <a href="adminpanel.php" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                      Admin Panel
+                  </a>
+              <?php endif; ?>
+
+              <?php if ($sessionManager->getUserType() === 'Delivery_Personnel' ): ?>
+                  <a href="http://127.0.0.1/NPH_Solar_Solutions/public/vieworders.php" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                      View Orders
+                  </a>
+              <?php endif; ?>
+
+              
+
+              <?php if ($sessionManager->isLoggedIn()): ?>
                   <div class="pl-2 rounded-md px-3 py-2 text-sm font-medium text-black-300">
                       <?php 
                           echo htmlspecialchars($greeting) . ', ';

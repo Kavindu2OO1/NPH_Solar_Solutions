@@ -1,28 +1,16 @@
 <?php
+require_once '../includes/session_manager.php';
 
-session_start();
-//error_reporting(0);          // Disable all error reporting
-//ini_set('display_errors', 0); 
+$sessionManager = new SessionManager();
+// Restrict access to only Admin role
+$sessionManager->checkAccess(['Admin']);
 
-// Restrict access to admins only
-if (!isset($_SESSION['loggedin']) || $_SESSION['user_type'] !== 'Admin') {
-    header("HTTP/1.1 403 Forbidden");
-    header("Location: Home_Page.php");
-    exit();
-}
 
-// Admin session timeout (1 hour)
-$admin_session_duration = 3600; //3600 = 1hour
-if (isset($_SESSION['created']) && (time() - $_SESSION['created'] > $admin_session_duration)) {
-    session_unset();
-    session_destroy();
-    header("Location: signin.php");
-    exit();
-}
+error_reporting(0);          // Disable all error reporting
+ini_set('display_errors', 0); 
 
-// Update session time on activity
-$_SESSION['created'] = time();
 ?>
+
 
 <?php 
   include 'navbar.php';
@@ -31,7 +19,7 @@ $_SESSION['created'] = time();
 <?php
 // Enable error reporting for debugging
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ini_set('display_errors', value: 1);
 
 
 require_once 'dB_Connection.php';
@@ -133,11 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<script>
-function scrollWin() {
-  window.scrollTo(0, 500);
-}
-</script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -186,6 +170,20 @@ function scrollWin() {
         ?>
 
     <div class="bg-gray-100 p-8  mb-48 mt-48 drop-shadow-2xl rounded max-w-md mx-auto md:max-w-6xl"> 
+        <!-- Alert Messages -->
+<?php if (isset($_SESSION['success'])): ?>
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+        <span class="block sm:inline"><?php echo $_SESSION['success']; ?></span>
+    </div>
+    <?php unset($_SESSION['success']); ?>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['error'])): ?>
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+        <span class="block sm:inline"><?php echo $_SESSION['error']; ?></span>
+    </div>
+    <?php unset($_SESSION['error']); ?>
+<?php endif; ?>
         <form method="POST" action="">        
             <div class="relative overflow-x-auto mb-8">
             <?php
@@ -212,6 +210,7 @@ function scrollWin() {
                         echo '<th scope="col" class="px-6 py-3">Address</th>';
                         echo '<th scope="col" class="px-6 py-3">City</th>';
                         echo '<th scope="col" class="px-6 py-3">Postal Code</th>';
+                        echo '<th scope="col" class="px-6 py-3">Action</th>';
                         echo "</tr>";
                         echo "</thead>";
                         echo "<tbody>";
@@ -230,6 +229,13 @@ function scrollWin() {
                             echo '<td class="px-6 py-4">' . htmlspecialchars($row['address']) . '</td>';
                             echo '<td class="px-6 py-4">' . htmlspecialchars($row['city']) . '</td>';
                             echo '<td class="px-6 py-4">' . htmlspecialchars($row['postal_code']) . '</td>';
+                            echo '<td class="px-6 py-4">';
+                            echo '<a href="delete_user.php?id=' . $row['id'] . '" 
+                                    onclick="return confirm(\'Are you sure you want to delete this user?\')"
+                                    class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 focus:outline-none">
+                                    Delete
+                                </a>';
+                            echo '</td>';
                             echo "</tr>";
                         }
                         echo "</tbody>";
@@ -256,6 +262,7 @@ function scrollWin() {
                         echo '<th scope="col" class="px-6 py-3">Phase Count</th>';
                         echo '<th scope="col" class="px-6 py-3">Status</th>';
                         echo '<th scope="col" class="px-6 py-3">Price</th>';
+                        echo '<th scope="col" class="px-6 py-3">Action</th>';
                         echo "</tr>";
                         echo "</thead>";
                         echo "<tbody>";
@@ -268,6 +275,13 @@ function scrollWin() {
                             echo '<td class="px-6 py-4">' . htmlspecialchars($row['phase_count']) . '</td>';
                             echo '<td class="px-6 py-4">' . htmlspecialchars($row['status']) . '</td>';
                             echo '<td class="px-6 py-4">' . htmlspecialchars($row['price']) . '</td>';
+                            echo '<td class="px-6 py-4">';
+                            echo '<a href="delete_project.php?id=' . $row['id'] . '" 
+                                    onclick="return confirm(\'Are you sure you want to delete this Project?\')"
+                                    class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 focus:outline-none">
+                                    Delete
+                                </a>';
+                            echo '</td>';
                             echo "</tr>";
                         }
                         echo "</tbody>";
@@ -317,36 +331,33 @@ function scrollWin() {
                 <button
                     type="submit"
                     name="InsertBtn"
-                    class="focus:outline-none hover:text-black text-white bg-orange-600 hover:bg-orange-600 focus:ring-4 focus:ring-orange-200 font-medium rounded-lg text-sm px-3 py-2 align-middle">
+                    class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
                     Insert Project
                 </button>
 
                 <button
                     type="submit"
                     name="UpdateBtn"
-                    class="focus:outline-none hover:text-black text-white bg-orange-600 hover:bg-orange-600 focus:ring-4 focus:ring-orange-200 font-medium rounded-lg text-sm px-3 py-2 align-middle">
+                    class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
                     Update Project
                 </button>
 
                 <div class="pt-5" id="masg">
-                <?php if (!empty($successMessage)): ?>
-                    <script>
-                    scrollWin();
-                    </script>
-                    <div class="bg-green-100 border   border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
-                        <span class="block sm:inline"><?= $successMessage ?></span>
-                        
-                    </div>
-                    <?php endif; ?>
+                    <?php if (!empty($successMessage)): ?>
+                        <div class="bg-green-100 border   border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                            <span class="block sm:inline"><?= $successMessage ?></span>
+                            
+                        </div>
+                        <?php endif; ?>
 
-                    <?php if (!empty($errors)): ?>
-                    <div class="bg-red-100 border  border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
-                        <?php foreach ($errors as $error): ?>
-                        <span class="block sm:inline"><?= $error ?></span>
-                        <?php endforeach; ?>
-                    </div>
-                    
-                    <?php endif; ?>
+                        <?php if (!empty($errors)): ?>
+                        <div class="bg-red-100 border  border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                            <?php foreach ($errors as $error): ?>
+                            <span class="block sm:inline"><?= $error ?></span>
+                            <?php endforeach; ?>
+                        </div>
+                        
+                        <?php endif; ?>
                 </div>
                         
             </div>
@@ -369,6 +380,15 @@ function scrollWin() {
     <?php 
         include 'footer.html';
      ?>
-    
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        const alerts = document.querySelectorAll('[role="alert"]');
+        alerts.forEach(function(alert) {
+            alert.style.display = 'none';
+        });
+    }, 5000);
+});
+</script>
 </body>
 </html>

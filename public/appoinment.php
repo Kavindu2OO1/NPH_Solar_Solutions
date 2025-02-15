@@ -1,3 +1,15 @@
+<?php
+require_once '../includes/session_manager.php';
+
+$sessionManager = new SessionManager();
+
+
+
+
+error_reporting(0);          // Disable all error reporting
+ini_set('display_errors', 0); 
+
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +34,133 @@
         
 
     </style>
+
+<?php
+    require_once 'dB_Connection.php';
+    session_start();
+
+    $errors = [];
+    $old_input = [];
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // Sanitize inputs
+        $fname = trim($_POST['fname'] ?? '');
+        $lname = trim($_POST['lname'] ?? '');
+        $nic = trim($_POST['nic'] ?? '');
+        $phone = trim($_POST['phone'] ?? '');
+        $password = $_POST['password'] ?? '';
+        $phase_count = intval($_POST['phase_count'] ?? 0);
+        $property_type = trim($_POST['property_type'] ?? '');
+        $address = trim($_POST['address'] ?? '');
+        $city = trim($_POST['city'] ?? '');
+        $postal_code = trim($_POST['postal_code'] ?? '');
+
+        // Store old input
+        $old_input = [
+            'fname' => htmlspecialchars($fname),
+            'lname' => htmlspecialchars($lname),
+            'nic' => htmlspecialchars($nic),
+            'phone' => htmlspecialchars($phone),
+            'phase_count' => $phase_count,
+            'property_type' => htmlspecialchars($property_type),
+            'address' => htmlspecialchars($address),
+            'city' => htmlspecialchars($city),
+            'postal_code' => htmlspecialchars($postal_code)
+        ];
+
+        // Validation
+        if (empty($fname)) $errors['fname'] = "First Name is required";
+        if (empty($lname)) $errors['lname'] = "Last Name is required";
+        
+        if (empty($nic)) {
+            $errors['nic'] = "ID Number is required";
+        } elseif (!preg_match('/^(\d{10,12}|\d{9}[A-Z])$/', $nic)) {
+            $errors['nic'] = "Invalid ID Number format (10-12 digits or 9 digits followed by an uppercase letter)";
+        }
+    
+        if (empty($phone)) {
+            $errors['phone'] = "Phone Number is required";
+        } elseif (!preg_match('/^\d{10}$/', $phone)) {
+            $errors['phone'] = "Invalid phone number format (10 digits)";
+        }
+
+        if (empty($password)) {
+            $errors['password'] = "Password is required";
+        } elseif (strlen($password) < 8) {
+            $errors['password'] = "Password must be at least 8 characters";
+        }
+
+        if ($phase_count === 0) {
+            $errors['phase_count'] = "Please select a phase";
+        } else {
+            $phase_count = ($phase_count == 1) ? 'Single Phase' : 'Three Phase';
+        }
+
+        
+        if (!isset($_POST['property_type']) || !in_array($_POST['property_type'], ['0', '1'])) {
+            $errors['property_type'] = "Please select property type";
+        } else {
+            $property_type = ($_POST['property_type'] === '0') ? 'Residential' : 'Commercial';
+        }
+
+        if (empty($address)) $errors['address'] = "Address is required";
+        if (empty($city)) $errors['city'] = "City is required";
+        
+        if (empty($postal_code)) {
+            $errors['postal_code'] = "Postal Code is required";
+        } elseif (!preg_match('/^\d{5}$/', $postal_code)) {
+            $errors['postal_code'] = "Invalid postal code (5 digits required)";
+        }
+
+        // Set default user type
+        $user_type = 'User';
+
+        if (empty($errors)) {
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            
+            $stmt = $conn->prepare("INSERT INTO appointments (
+                first_name, 
+                last_name, 
+                id_number, 
+                phone_number, 
+                phase_count,  
+                property_type, 
+                address, 
+                city, 
+                postal_code, 
+                password_hash
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+            if ($stmt) {
+                $stmt->bind_param(
+                    "sssssssssss",
+                    $fname,
+                    $lname,
+                    $nic,
+                    $phone,
+                    $phase_count,
+                    $user_type,
+                    $property_type,
+                    $address,
+                    $city,
+                    $postal_code,
+                    $hashed_password
+                );
+
+                if ($stmt->execute()) {
+                    $showSuccess = true;
+                    $old_input = []; // Clear form on success
+                } else {
+                    $errors['database'] = "Error: " . $stmt->error;
+                }
+                $stmt->close();
+            } else {
+                $errors['database'] = "Database error: " . $conn->error;
+            }
+        }
+        $conn->close();
+    }
+    ?>
 </head>
 <body>
     <?php 

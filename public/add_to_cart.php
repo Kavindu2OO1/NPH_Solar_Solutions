@@ -2,8 +2,10 @@
 require_once 'classes/ShoppingCart.php';
 require_once 'classes/Database.php';  // Add this line
 require_once 'classes/Product.php';   // Add this line
-
-session_start();
+require_once '../includes/session_manager.php';
+$sessionManager = new SessionManager();
+$userId = $sessionManager->getUserId();
+//session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userId = $_SESSION['user_id'] ?? null;
@@ -18,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($productId) {
         $cart = new ShoppingCart();
         $cart->addToCart($userId, $productId, $quantity);
-        header('Location: shoppingcart.php');
+        header('Location: product.php');
         exit;
     }
 }
