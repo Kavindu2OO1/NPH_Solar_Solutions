@@ -3,6 +3,12 @@ require_once '../config/database.php';
 require_once '../includes/session_manager.php';
 
 $sessionManager = new SessionManager();
+
+// Check if the user is logged in, if  yes redirect to home page
+if (isset($_SESSION['loggedin']) ) {
+    header("Location: Home_Page.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +41,7 @@ $sessionManager = new SessionManager();
 <?php 
     //database connection
 require_once 'dB_Connection.php';
-//session_start();
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -76,35 +82,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = $result->fetch_assoc();
             
             if(password_verify($password, $user['password_hash'])) {
-                // Set session variables
-               // $_SESSION['user_id'] = $user['id'];
-               // $_SESSION['user_type'] = $user['user_type'];
-              //  $_SESSION['loggedin'] = true;
-               // $_SESSION['first_name'] = $user['first_name'];
+    
                $sessionManager->login([
                 'id' => $user['id'],
                 'user_type' => $user['user_type'],
                 'first_name' => $user['first_name']
             ]);
 
-             //   if($user['user_type'] === 'User'){
-                // Redirect to home page
-             //   header("Location: Home_Page.php");
-             //   exit();
-             //   }else if($user['user_type'] === 'Admin'){
-                    // Redirect to admin panel
-             //       header("Location: adminpanel.php");
-              //      exit();
-               // }
+            
                switch($user['user_type']) {
                 case 'Admin':
                     header("Location: adminpanel.php");
                     break;
                 case 'Manager':
-                    header("Location: /protected/manager/dashboard.php");
+                    header("Location: adminpanel.php");
                     break;
                 case 'Delivery_Personnel':
-                    header("Location: Home_Page.php");
+                    header("Location: vieworders.php");
                     break;
                 case 'User':
                     header("Location: Home_Page.php");

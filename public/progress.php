@@ -167,7 +167,7 @@ if ($userId !== 0): ?>
             <?php if ($sessionManager->isLoggedIn()): ?>
                 <div class="pl-2 rounded-md px-3 py-2 text-sm font-medium text-gray-700">
                     <?php 
-                    // Display the username in bold and larger, followed by "'s project progress"
+               
                     echo '<span class="font-bold text-lg">' . htmlspecialchars($_SESSION['first_name']) . '</span>\'s project progress.'; 
                     ?>
                 </div>
@@ -236,15 +236,15 @@ if ($userId !== 0): ?>
     </form>
 
     <?php
-    require_once 'dB_Connection.php'; // Include your database connection file
+    require_once 'dB_Connection.php'; 
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['calculateBtn'])) {
-        $idNumber = $_POST['ID_Number']; // Get the entered national ID
+        $idNumber = $_POST['ID_Number']; 
 
-        // Step 1: Find the user ID based on the national ID
+       
         $sqlUser = "SELECT id, first_name, last_name FROM users WHERE id_number = ?";
         if ($stmtUser = mysqli_prepare($conn, $sqlUser)) {
-            mysqli_stmt_bind_param($stmtUser, "s", $idNumber); // Bind the national ID as a string
+            mysqli_stmt_bind_param($stmtUser, "s", $idNumber); 
             mysqli_stmt_execute($stmtUser);
             $resultUser = mysqli_stmt_get_result($stmtUser);
 
@@ -253,10 +253,10 @@ if ($userId !== 0): ?>
                 $firstName = $rowUser['first_name'];
                 $lastName = $rowUser['last_name'];
 
-                // Step 2: Fetch projects belonging to the user ID
+                // get projects belonging to the user ID
                 $sqlProjects = "SELECT * FROM projects WHERE user_id = ?";
                 if ($stmtProjects = mysqli_prepare($conn, $sqlProjects)) {
-                    mysqli_stmt_bind_param($stmtProjects, "i", $userId); // Bind the user ID as an integer
+                    mysqli_stmt_bind_param($stmtProjects, "i", $userId); 
                     mysqli_stmt_execute($stmtProjects);
                     $resultProjects = mysqli_stmt_get_result($stmtProjects);
 
@@ -291,9 +291,9 @@ if ($userId !== 0): ?>
 
                         echo "</tbody>";
                         echo "</table>";
-                        echo '</div>'; // Close projects table container
-                        echo '</div>'; // Close user details container
-                        echo '</div>'; // Close custom1 div
+                        echo '</div>'; 
+                        echo '</div>'; 
+                        echo '</div>'; 
                     } else {
                         echo '<div class="text-center py-4 text-gray-500">No projects found for this user.</div>';
                     }

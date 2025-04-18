@@ -3,7 +3,7 @@ require_once '../includes/session_manager.php';
 
 $sessionManager = new SessionManager();
 // Restrict access to only Admin role
-$sessionManager->checkAccess(['Admin']);
+$sessionManager->checkAccess(['Admin','Manager']);
 
 error_reporting(0);          // Disable all error reporting
 ini_set('display_errors', 0); 
@@ -28,11 +28,7 @@ ini_set('display_errors', value: 1);
 
 require_once 'dB_Connection.php';
 
-// Check if the user is an admin
-if (!isset($_SESSION['loggedin']) || $_SESSION['user_type'] !== 'Admin') {
-    header("Location: Home_Page.php");
-    exit();
-}
+
 
 // Handle form submission
 $errors = [];

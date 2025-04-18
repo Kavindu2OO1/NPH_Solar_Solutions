@@ -3,7 +3,7 @@ require_once '../includes/session_manager.php';
 
 $sessionManager = new SessionManager();
 // Restrict access to only Admin role
-$sessionManager->checkAccess(['Admin']);
+$sessionManager->checkAccess(['Admin','Manager']);
 
 
 error_reporting(0);          // Disable all error reporting
@@ -25,10 +25,10 @@ ini_set('display_errors', value: 1);
 require_once 'dB_Connection.php';
 
 // Check if the user is an admin
-if (!isset($_SESSION['loggedin']) || $_SESSION['user_type'] !== 'Admin') {
-    header("Location: Home_Page.php");
-    exit();
-}
+//if (!isset($_SESSION['loggedin']) || $_SESSION['user_type'] !== 'Admin') {
+//    header("Location: Home_Page.php");
+//    exit();
+//}
 
 // Handle form submission
 $errors = [];
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $status = $_POST['status'] ?? '0';
         $price = trim($_POST['price'] ?? '');
 
-        // Convert numeric values to meaningful strings
+        // Convert numeric values 
         $phase_mapping = [
             '0' => 'Single Phase',
             '3' => 'Three Phase'
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = $result->fetch_assoc();
         $user_id = $user['id'];
 
-        // Map values to database-friendly formats
+        // Map values 
         $phase_value = $phase_mapping[$phase_count] ?? 'Single Phase';
         $status_value = $status_mapping[$status] ?? 'Pending';
 
@@ -143,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             z-index: 10;
         }
 
-        /* Background Styling */
+        
         body {
             background-image: url('/NPH_Solar_Solutions/pictures/solar-panels-roof-solar-cell.jpg');
             background-size: cover;

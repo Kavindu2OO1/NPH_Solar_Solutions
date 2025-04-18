@@ -1,7 +1,7 @@
 <?php
 require_once '../includes/session_manager.php';
 $sessionManager = new SessionManager();
-$sessionManager->checkAccess(['Admin']);
+$sessionManager->checkAccess(['Admin','Manager']);
 
 error_reporting(0);
 ini_set('display_errors', 0);

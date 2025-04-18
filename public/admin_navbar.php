@@ -4,7 +4,7 @@ error_reporting(0);          // Disable all error reporting
 ini_set('display_errors', 0); 
 
 
-// Set default timezone (adjust to your location)
+// Set Sri lanksn timezone 
 date_default_timezone_set('Asia/Colombo');
 
 // Initialize greeting
@@ -43,10 +43,21 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
             Set Project Progress
         </a>
 
-        <a href="http://127.0.0.1/NPH_Solar_Solutions/public/usermanagement.php" 
+        <a href="../public/usermanagement.php" 
             class="text-white bg-blue-700 hover:bg-blue-800  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 m-3  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
             User Management
         </a>
+
+        <a href="http://127.0.0.1/NPH_Solar_Solutions/public/reports.php" 
+            class="text-white bg-blue-700 hover:bg-blue-800  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 m-3  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+            Reports
+        </a>
+
+        <a href="http://127.0.0.1/NPH_Solar_Solutions/public/products.php" 
+            class="text-white bg-blue-700 hover:bg-blue-800  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 m-3  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+            Products
+        </a>
+
 
        
 

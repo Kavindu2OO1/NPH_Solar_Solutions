@@ -33,7 +33,7 @@ return [
     'global_settings' => [
         'session_name' => 'MYSECUREAPP_SESSION',
         'cookie_path' => '/',
-        'cookie_domain' => '', // Set to your domain if needed
+        'cookie_domain' => '', 
         'secure' => true,
         'httponly' => true
     ]

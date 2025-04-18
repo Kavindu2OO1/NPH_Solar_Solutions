@@ -8,9 +8,9 @@ $sessionManager->checkAccess(['Admin']);
 error_reporting(0);          // Disable all error reporting
 ini_set('display_errors', 0); 
 
-// Restrict access to admins on
 
-// Admin session timeout (1 hour)
+
+
 
 ?>
 

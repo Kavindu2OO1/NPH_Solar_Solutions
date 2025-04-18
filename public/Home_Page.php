@@ -25,7 +25,7 @@ ini_set('display_errors', 0);
   
 
     <style>
-        /* HTML: <div class="loader"></div> */
+       
         .dropdown{
             padding-top: 5px;
             
@@ -45,7 +45,7 @@ ini_set('display_errors', 0);
         display: block;
         }
 
-        /* Background Styling */
+     
         body {
             background-image: url('/NPH_Solar_Solutions/pictures/solar-panels-roof-solar-cell.jpg');
             background-size: cover;
@@ -56,7 +56,6 @@ ini_set('display_errors', 0);
 
         
 
-        /* Ensure content is visible over the background */
         nav, .content {
             position: relative;
             z-index: 10;
@@ -72,12 +71,44 @@ ini_set('display_errors', 0);
     padding: 1rem;
         }
 
+        /* Loading animation styles */
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.9);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.3s ease;
+    }
+
+    .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #ff6600;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
     </style>
 
     
 </head>
 <body>
-  
+<div class="loading-overlay" id="loading">
+    <div class="loading-spinner"></div>
+</div>
+
 
 <div class="text2 font-sans text-left font-bold tracking-wide bg-white   max-w-fit m-auto mt-16 sm:w-3/4 md:w-1/2 lg:w-1/3">
     <p class="font-sans text-black text-xl pl-1 pr-1 pb-1 sm:text-2xl md:text-3xl align-middle text-center">
@@ -229,7 +260,11 @@ ini_set('display_errors', 0);
 <?php 
   include 'footer.html';
 ?>
-
+<script>
+    window.onload = function() {
+        document.getElementById('loading').style.display = 'none';
+    };
+</script>
 
 </body>
 </html>

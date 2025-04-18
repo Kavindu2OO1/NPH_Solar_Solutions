@@ -23,7 +23,7 @@ include 'navbar.php';
         z-index: 10;
     }
 
-    /* Background Styling */
+   
     body {
             background-image: url('/NPH_Solar_Solutions/pictures/solar-panels-roof-solar-cell.jpg');
             background-size: cover;
@@ -34,7 +34,6 @@ include 'navbar.php';
 
         
 
-        /* Ensure content is visible over the background */
         nav, .content {
             position: relative;
             z-index: 10;

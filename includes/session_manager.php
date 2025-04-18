@@ -6,7 +6,7 @@ class SessionManager {
     public function __construct() {
         $this->config = require __DIR__ . '/../config/session_config.php';
         
-        // Configure secure session settings
+        // Configure settings
         ini_set('session.use_strict_mode', 1);
         ini_set('session.cookie_httponly', 1);
         ini_set('session.use_only_cookies', 1);
@@ -16,7 +16,7 @@ class SessionManager {
     }
 
     public function login($user_data) {
-        // Prevent session fixation
+        
         session_regenerate_id(true);
 
         // Set session data
@@ -49,7 +49,7 @@ class SessionManager {
     public function checkAccess($requiredRoles = []) {
         // Check login status
         if (!$this->isLoggedIn()) {
-            header("Location: /public/signin.php");
+            header("Location: ../public/signin.php");
             exit();
         }
 
@@ -76,7 +76,7 @@ class SessionManager {
 
     private function rotateSessionId() {
         static $last_rotation = 0;
-        $rotation_interval = 300; // Rotate every 5 minutes
+        $rotation_interval = 300; // check every 5 minutes
 
         if (time() - $last_rotation > $rotation_interval) {
             session_regenerate_id(true);

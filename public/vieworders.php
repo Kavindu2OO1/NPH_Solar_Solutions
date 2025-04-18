@@ -3,7 +3,7 @@ require_once '../includes/session_manager.php';
 
 $sessionManager = new SessionManager();
 // Restrict access to only Admin role
-$sessionManager->checkAccess(['Admin','Delivery_Personnel']);
+$sessionManager->checkAccess(['Admin','Delivery_Personnel','Manager']);
 
 
 error_reporting(0);          // Disable all error reporting
@@ -170,6 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         echo '<th scope="col" class="px-6 py-3">User ID</th>';
                         echo '<th scope="col" class="px-6 py-3">Total Price</th>';
                         echo '<th scope="col" class="px-6 py-3">Status</th>';
+                        echo '<th scope="col" class="px-6 py-3">Customer Information</th>';
                         echo '<th scope="col" class="px-6 py-3">Created at</th>';
                         echo '<th scope="col" class="px-6 py-3">Action</th>';
                         echo "</tr>";
@@ -183,6 +184,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 htmlspecialchars($row['user_id']) . '</th>';
                             echo '<td class="px-6 py-4">' . htmlspecialchars($row['total_price']) . '</td>';
                             echo '<td class="px-6 py-4">' . htmlspecialchars($row['status']) . '</td>';
+                            echo '<td class="px-6 py-4">' . htmlspecialchars($row['customer_info']) . '</td>';
                             echo '<td class="px-6 py-4">' . htmlspecialchars($row['created_at']) . '</td>';
                             echo '<td class="px-6 py-4">';
                             echo '<a href="delete_order.php?id=' . $row['id'] . '" 

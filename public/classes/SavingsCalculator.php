@@ -39,7 +39,7 @@ class SavingsCalculator {
             'units_consumed' => $unitsConsumed,
             'monthly_bill' => $monthlyBill,
             'monthly_savings' => $monthlySavings,
-            'solar_monthly_installment' => $estimatedCost / 120 // Assuming 10-year payment plan
+            'solar_monthly_installment' => $estimatedCost / 120 
         ];
     }
     

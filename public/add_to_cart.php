@@ -1,7 +1,7 @@
 <?php
 require_once 'classes/ShoppingCart.php';
-require_once 'classes/Database.php';  // Add this line
-require_once 'classes/Product.php';   // Add this line
+require_once 'classes/Database.php';  
+require_once 'classes/Product.php';   
 require_once '../includes/session_manager.php';
 $sessionManager = new SessionManager();
 $userId = $sessionManager->getUserId();
